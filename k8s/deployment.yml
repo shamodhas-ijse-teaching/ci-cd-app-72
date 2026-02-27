@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: k3s-cicd-app
 spec:
-  replicas: 3 # High Availability & Load Balancing
+  replicas: 3
   selector:
     matchLabels:
       app: k3s-cicd-app
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: k3s-cicd-app
-          image: DOCKER_IMAGE_TAG # Replaced dynamically by CI/CD pipeline
+          image: DOCKER_IMAGE_TAG
           ports:
             - containerPort: 8080
