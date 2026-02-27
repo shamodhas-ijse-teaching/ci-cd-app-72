@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3s-cicd-app
+spec:
+  replicas: 3 # High Availability & Load Balancing
+  selector:
+    matchLabels:
+      app: k3s-cicd-app
+  template:
+    metadata:
+      labels:
+        app: k3s-cicd-app
+    spec:
+      containers:
+        - name: k3s-cicd-app
+          image: DOCKER_IMAGE_TAG # Replaced dynamically by CI/CD pipeline
+          ports:
+            - containerPort: 8080
